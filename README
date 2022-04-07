@@ -30,10 +30,9 @@ fi identificat cu o retea Bayes.
 
     Cerinta 2:
 
-    Urmarind pasii enumerati in tema, incepem prin a crea graful ancestral,
-astfel incat pentru fiecare variabila aflam ce stramosi are, prin a parcurge 
-graful initial si a verifica daca exista un drum intre presupusul stramos si
-nodul din datele de intrare. Daca exista si nodul nu a fost deja adaugat in
+    Incepem prin a crea graful ancestral,astfel incat pentru fiecare variabila aflam
+ce stramosi are, prin a parcurge graful initial si a verifica daca exista un drum intre presupusul 
+stramos si nodul din datele de intrare. Daca exista si nodul nu a fost deja adaugat in
 vectorul de stramosi, acesta se adauga, iar in caz contrar se trece mai departe.
 Functia de verificare daca exista sau nu drum este implementata prin intermediul
 unei cozi, in care se viziteaza toate nodurile in care se poate ajunge din acel 
