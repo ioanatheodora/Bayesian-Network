@@ -1,0 +1,55 @@
+//Popa Ioana-Theodora
+//315CD
+
+    Retele Bayes - Tema 3
+
+    Structuri de date folosite:
+    Am folosit grafuri reprezentate prin liste de adiacenta, pentru care
+am retinut, in plus, o matrice cu numele nodurilor si un vector in care se
+stocheaza gradul de intrare si de iesire al unui nod.
+    Am folosit reprezentarea unei cozi pentru a putea parcurge graful.
+
+    Cream in ambele cerinte grafurile printr-o lista de adiacenta, citind
+numele fiecarui nod si indexandu-l in componenta idx a grafului. Se elibereaza
+toata memoria atunci cand nu mai este nevoie de ea.
+
+    Cerinta 1: Verificarea daca graful este orientat aciclic
+
+    Parcurgem nodurile, stocam intr-un vector toate gradele de intrare ale
+acestora si le introducem intr-o coada pe cele care au gradul
+de intrare egal cu 0(le adaugam pe toate pentru a putea parcurge graful si
+in cazul in care nu este tare conex). Urmeaza sa aflam pentru cate noduri 
+se poate forma un ciclu, updatand constant vectorul gradelor de intrare.
+    Pentru fiecare nod aflat in coada, il vom extrage, vom parcurge lista de
+adiacenta a sa, pentru fiecare nod parcurs scazand cate o unitate din gradul
+de intrare de la momentul respectiv(din vectorul mentionat mai sus) si vom 
+adauga in coada nodurile care au gradul la momentul respectiv 0, retinand 
+numarul de noduri care au fost adaugate in coada.
+    Dupa ce coada ramane vida, daca numarul de noduri care este adaugat in coada
+este mai mic decat numarul de noduri al grafului, inseamna ca exista cel putin doua 
+noduri pentru care nu s a putut ajunge la gradul de intrare 0, adica poate exista un 
+ciclu, deci graful nu este aciclic. In caz contrar, graful este aciclic si poate
+fi identificat cu o retea Bayes.
+
+    Cerinta 2:
+
+    Urmarind pasii enumerati in tema, incepem prin a crea graful ancestral,
+astfel incat pentru fiecare variabila aflam ce stramosi are, prin a parcurge 
+graful initial si a verifica daca exista un drum intre presupusul stramos si
+nodul din datele de intrare. Daca exista si nodul nu a fost deja adaugat in
+vectorul de stramosi, acesta se adauga, iar in caz contrar se trece mai departe.
+Functia de verificare daca exista sau nu drum este implementata prin intermediul
+unei cozi, in care se viziteaza toate nodurile in care se poate ajunge din acel 
+nod sau se opreste daca s-a ajuns la nodul cautat.
+    Ulterior, construim un graf auxiliar in care eliminam nodurile ce nu se 
+afla in vectorul de stramosi si muchiile corespunzatoare acestora.
+    In urmatorul pas, moralizam graful, pentru fiecare nod care are gradul de
+intrare mai mare ca 2, cautand parintii comuni, retinandu-i intr-o matrice si,
+la final, adaugand o muchie neorientata pentru fiecare pereche de parinti.
+    Transformam graful intr-unul neorientat, pentru fiecare muchie din graf
+adaugand muchia "in sens invers", in cazul in care ea nu exista deja.
+Eliminam nodurile observate din graful auxiliar si testam daca exista un
+drum intre variabilele despre care vrem sa aflam daca sunt independente sau nu.
+Daca exista, nu se poate garanta ca acestea sunt independente, iar daca nu 
+este sigur ca sunt independente.
+    Repetam acest proceceu pentru numarul dat de interogari.
